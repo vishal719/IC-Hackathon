@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "236351611228",
+    "firebase_url": "https://ic-hackathon-bb7b1-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "ic-hackathon-bb7b1",
+    "storage_bucket": "ic-hackathon-bb7b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236351611228:android:09e061747ccff1405da199",
+        "android_client_info": {
+          "package_name": "com.example.ic_hackathon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236351611228-5090l481adbvvgjopsis7jiadm98qre3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA51R8HjJFQC5B9-1mCCou7L4tKYe2bw8U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236351611228-5090l481adbvvgjopsis7jiadm98qre3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
