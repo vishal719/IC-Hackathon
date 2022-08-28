@@ -6,6 +6,105 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/ic_undraw_collaborators_re_hont"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="Welcome to Rakshak"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="It is never too late to be what you might have been."
+        android:textColor="@color/AppTextColour"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <LinearLayout
+        android:id="@+id/edittext4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <com.hbb20.CountryCodePicker
+            android:layout_width="50dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center_vertical"
+            app:ccpDialog_showCloseIcon="true"
+            app:ccp_autoDetectCountry="true"
+            app:ccp_contentColor="@color/white"
+            app:ccp_countryPreference="IN"
+            app:ccp_showFlag="false"
+            android:id="@+id/ccp"
+            app:ccp_showNameCode="false"
+            app:ccp_textSize="14dp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/phoneEdittext"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@drawable/round1"
+            android:backgroundTint="#E1DDED"
+            android:gravity="center_vertical"
+            android:hint="Enter Phone"
+            android:inputType="phone"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/buttoncontinue"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="36dp"
+        android:background="@drawable/round1"
+        android:backgroundTint="#E91E63"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="Continue"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext4"
+        app:layout_constraintVertical_bias="0.19999999" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
