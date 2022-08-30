@@ -9,7 +9,8 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/ic_undraw_collaborators_re_hont"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,13 +20,13 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:gravity="center"
         android:text="Welcome to Rakshak"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="24dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,18 +57,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
-        <com.hbb20.CountryCodePicker
+        <TextView
+            android:id="@+id/cpp"
             android:layout_width="50dp"
             android:layout_height="46dp"
             android:layout_gravity="center_vertical"
-            app:ccpDialog_showCloseIcon="true"
-            app:ccp_autoDetectCountry="true"
-            app:ccp_contentColor="@color/white"
-            app:ccp_countryPreference="IN"
-            app:ccp_showFlag="false"
-            android:id="@+id/ccp"
-            app:ccp_showNameCode="false"
-            app:ccp_textSize="14dp"
+            android:text="+91"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center"
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
@@ -81,17 +80,15 @@
             android:inputType="phone"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/buttoncontinue"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="36dp"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="36dp"
         android:background="@drawable/round1"
         android:backgroundTint="#E91E63"
         android:clickable="true"
@@ -101,8 +98,8 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/edittext4"
+        app:layout_constraintStart_toStartOf="@+id/edittext4"
         app:layout_constraintTop_toBottomOf="@+id/edittext4"
         app:layout_constraintVertical_bias="0.19999999" />
 

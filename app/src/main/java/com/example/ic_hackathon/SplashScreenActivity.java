@@ -8,19 +8,18 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
-import com.example.ic_hackathon.databinding.ActivityLoginBinding;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginActivity extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity {
 
+    Thread thread;
 
-    ActivityLoginBinding binding;
     public static void setWindowFlag(Activity activity, final int bits, boolean on) {
         Window win = activity.getWindow();
         WindowManager.LayoutParams winParams = win.getAttributes();
@@ -42,38 +41,52 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.TRANSPARENT);
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_splash_screen);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
             hideStatus();
 
-        binding.buttoncontinue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        thread = new Thread(){
+            public void run(){
+                try {
+                    sleep(1200);
 
-                String number = binding.phoneEdittext.getText().toString().trim();
-
-                if(!number.equals("")){
-
-                    Intent intent = new Intent(LoginActivity.this,OtpActivity.class);
-                    intent.putExtra("number","+91"+binding.phoneEdittext.getText());
-                    startActivity(intent);
                 }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+                finally {
+                    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                    checkUsername(currentUser);
 
-                else {
 
-                    Toast.makeText(LoginActivity.this, "Enter a phone number", Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        };thread.start();
 
 
     }
 
+    public void checkUsername(FirebaseUser currentUser){
+        if(currentUser != null){
+            currentUser.reload();
+            Intent intent = new Intent(SplashScreenActivity.this,MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+
+
+        }
+        else{
+            Intent intent = new Intent(SplashScreenActivity.this,LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+
+        }
+    }
 
 }
