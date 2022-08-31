@@ -16,6 +16,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.ic_hackathon.Fragments.ContactsFragment;
+import com.example.ic_hackathon.Fragments.EmergencyFragment;
 import com.example.ic_hackathon.Fragments.HomeFragment;
 import com.example.ic_hackathon.Fragments.MyProfileFragment;
 import com.example.ic_hackathon.databinding.ActivityMainBinding;
@@ -66,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
                 {
                     case R.id.homee:
                         transaction.replace(R.id.Main_activity,new HomeFragment());
+                        break;
+
+                    case R.id.help:
+                        transaction.replace(R.id.Main_activity,new EmergencyFragment());
                         break;
 
                     case R.id.host:

@@ -185,7 +185,7 @@ public class OtpActivity extends AppCompatActivity {
                             FirebaseUser user = task.getResult().getUser();
 
                             if(isNew){
-                                Intent intent = new Intent(OtpActivity.this,MainActivity.class);
+                                Intent intent = new Intent(OtpActivity.this,InputDetailsActivity.class);
                                 intent.putExtra("msg", "false");
                                 startActivity(intent);
                                 finishAffinity();

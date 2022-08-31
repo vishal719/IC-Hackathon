@@ -8,6 +8,12 @@
         />
 
     <item
+        android:id="@+id/help"
+        android:title="Emergency"
+        android:icon="@drawable/ic_round_emergency_24"
+        />
+
+    <item
         android:id="@+id/host"
         android:title="Contacts"
         android:icon="@drawable/ic_round_phone_24"
