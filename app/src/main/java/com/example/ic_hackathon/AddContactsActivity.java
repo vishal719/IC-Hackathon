@@ -22,12 +22,18 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ic_hackathon.Adapter.AddContactsAdapter;
 import com.example.ic_hackathon.Adapter.ContactsAdapter;
 import com.example.ic_hackathon.Model.ContactsModels;
 import com.example.ic_hackathon.databinding.ActivityAddContactsBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -37,6 +43,8 @@ public class AddContactsActivity extends AppCompatActivity {
     ArrayList<ContactsModels> list;
     ArrayList<ContactsModels> searchlist;
     AddContactsAdapter adapter;
+    public static TextView btnDownload;
+    FirebaseDatabase database;
 
     public static void setWindowFlag(Activity activity, final int bits, boolean on) {
         Window win = activity.getWindow();
@@ -67,6 +75,9 @@ public class AddContactsActivity extends AppCompatActivity {
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
             hideStatus();
+
+        btnDownload = (TextView) findViewById(R.id.buttoncontinue);
+
 
         list = new ArrayList<>();
         if(ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_CONTACTS)

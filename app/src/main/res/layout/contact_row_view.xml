@@ -11,6 +11,7 @@
         app:cardCornerRadius="10dp"
         app:cardElevation="1dp"
         app:cardUseCompatPadding="true"
+        android:clickable="true"
         android:background="@drawable/custom_ripple_effect"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,6 +21,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/call_conatiner"
             android:clickable="true"
             android:background="@drawable/custom_ripple_effect">
 
@@ -95,11 +97,11 @@
                 android:textStyle="bold"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                app:layout_constraintEnd_toStartOf="@+id/call_menu"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/call_menu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"

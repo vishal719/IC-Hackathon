@@ -1,13 +1,17 @@
 package com.example.ic_hackathon;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -35,10 +39,15 @@ import com.google.firebase.storage.UploadTask;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+
+
 public class InputDetailsActivity extends AppCompatActivity {
 
     ActivityInputDetailsBinding binding;
     FirebaseDatabase database;
+    Uri photouri;
 
     public static void setWindowFlag(Activity activity, final int bits, boolean on) {
         Window win = activity.getWindow();
@@ -70,7 +79,29 @@ public class InputDetailsActivity extends AppCompatActivity {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
             hideStatus();
 
+        requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 111);
+
         database = FirebaseDatabase.getInstance();
+
+        binding.myPhotoCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+/*
+                ImagePicker.with(InputDetailsActivity.this)
+                        .crop(1,1)//Crop image(Optional), Check Customization for more option
+                        .compress(100)		//Final image size will be less than 1 MB(Optional)
+                        .maxResultSize(480,480)	//Final image resolution will be less than 1080 x 1080(Optional)
+                        .createIntent(new Function1<Intent, Unit>() {
+                            @Override
+                            public Unit invoke(Intent Intent) {
+
+                                startForProfileImageResult.launch(Intent );
+                                return null;
+                            }
+                        });
+*/
+            }
+        });
 
         binding.SetProfileDoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +149,43 @@ public class InputDetailsActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+
+        if (requestCode == 111){
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults.length>0){
+
+            }
+            else
+                Toast.makeText(this, "Grant Storage Permissions for full functionality", Toast.LENGTH_SHORT).show();
+        }
+    }
+    ActivityResultLauncher startForProfileImageResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+
+                        Intent intent = result.getData();
+                        if (intent != null) {
+                            Uri uri2 = intent.getData();
+                            binding.myPhotoLoad.setImageURI(uri2);
+                            photouri = uri2;
+                            binding.myPhoto.setVisibility(View.INVISIBLE);
+                            SharedPreferences preferences3 = getSharedPreferences("pictureuri", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor3 = preferences3.edit();
+                            editor3.remove(FirebaseAuth.getInstance().getUid());
+                            editor3.putString(FirebaseAuth.getInstance().getUid(), String.valueOf(photouri));
+                            editor3.apply();
+
+                        }
+                    }
+                }
+            });
+
 
     public void uploadToFirebase(Uri uri){
         StorageReference sref = FirebaseStorage.getInstance().getReference();
