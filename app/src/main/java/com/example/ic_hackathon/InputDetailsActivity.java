@@ -121,8 +121,11 @@ public class InputDetailsActivity extends AppCompatActivity {
                                 uploadToFirebase(Uri.parse(photouriString));
 
                                 String curr = new SimpleDateFormat("dd  MMM  yyyy").format(new Date());
+                                String str = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber().toString();
 
                                 UserModel model = new UserModel(FirebaseAuth.getInstance().getUid(),binding.inputName.getText().toString(),photouriString,"");
+
+                                model.setNumber(str);
                                 snapshot.getRef().setValue(model);
 
                                 database.getReference().child("Incomplete_login").child(FirebaseAuth.getInstance().getUid()).removeValue();

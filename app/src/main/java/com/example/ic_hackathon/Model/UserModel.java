@@ -7,6 +7,7 @@ public class UserModel {
     private String photo;
     private String location;
     private String age;
+    private String number;
     private String height;
     private String weight;
     private String blood;
@@ -20,6 +21,14 @@ public class UserModel {
         this.username = username;
         this.photo = photo;
         this.location = location;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getAge() {

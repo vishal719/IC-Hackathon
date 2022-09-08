@@ -105,7 +105,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.viehol
         MenuInflater inflater = new MenuInflater(v.getContext());
         inflater.inflate(R.menu.navigation_draawer, menuBuilder);
         @SuppressLint("RestrictedApi") MenuPopupHelper optionsMenu = new MenuPopupHelper(v.getContext(), menuBuilder, holder.del);
-        database = FirebaseDatabase.getInstance("https://ic-hackathon-bb7b1-default-rtdb.asia-southeast1.firebasedatabase.app");
+        database = FirebaseDatabase.getInstance("https://ic-hackathon-bb7b1-default-rtdb.asia-southeast1.firebasedatabase.app/");
         menuBuilder.setCallback(new MenuBuilder.Callback() {
             @Override
             public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item) {

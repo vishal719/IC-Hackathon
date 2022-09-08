@@ -65,13 +65,13 @@ public class AddContactsAdapter extends RecyclerView.Adapter<AddContactsAdapter.
             @Override
             public void onClick(View view) {
 
-                database.getReference().child("Contacts").child(FirebaseAuth.getInstance().getUid()).child(models.getNumber().trim()).addListenerForSingleValueEvent(new ValueEventListener() {
+                database.getReference().child("Contacts").child(FirebaseAuth.getInstance().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                         for(int i = 0; i< Flist.size(); i++){
 
-                            snapshot.getRef().setValue(Flist.get(i));
+                            snapshot.getRef().push().setValue(Flist.get(i));
 
                         }
 

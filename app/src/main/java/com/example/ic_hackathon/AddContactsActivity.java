@@ -169,7 +169,7 @@ public class AddContactsActivity extends AppCompatActivity {
 
                     ContactsModels contactsModels = new ContactsModels();
                     contactsModels.setName(name);
-                    contactsModels.setNumber(number);
+                    contactsModels.setNumber(number.replaceAll("\\s+",""));
                     list.add(contactsModels);
                     cursor1.close();
                 }
