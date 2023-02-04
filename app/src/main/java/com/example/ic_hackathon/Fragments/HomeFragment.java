@@ -64,11 +64,15 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater);
 
         database  = FirebaseDatabase.getInstance();
+        
+        //setting text for different buttons
         emj[0] = "I had an accident!";
         emj[1] = "I have an injury!";
         emj[2] = "I am out of gas!";
         emj[3] = "My car broke down!";
 
+        
+        //setting actions toclick on different buttons
         binding.acciCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
